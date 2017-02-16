@@ -10,17 +10,31 @@ library(shiny)
 shinyUI(fluidPage(
 
   # Application title
-  titlePanel("Old Faithful Geyser Data"),
+  titlePanel("Time series with forecast package"),
 
   # Sidebar with a slider input for number of bins
   sidebarLayout(
     sidebarPanel(
-      sliderInput("bins",
-                  "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30)
+      numericInput(inputId="AR",
+                   label="Auto Regressive terms",
+                   min = 0,
+                   max = 3,
+                   value = 1),
+      numericInput(inputId="MA",
+                   label="Moving Average terms",
+                   min = 0,
+                   max = 3,
+                   value = 1),
+      numericInput(inputId="DF",
+                   label="Differencing",
+                   min = 0, 
+                   max = 3,
+                   value = 0),
+      verbatimTextOutput("modelData")
+    
     ),
+    
+    
 
     # Show a plot of the generated distribution
     mainPanel(
