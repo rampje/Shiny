@@ -1,0 +1,10 @@
+name: ShinyDeploy
+title: ShinyDeploy
+account: rampje
+server: shinyapps.io
+appId: 157203
+bundleId: 713482
+url: https://rampje.shinyapps.io/ShinyDeploy/
+when: 1487217166.64557
+asMultiple: FALSE
+asStatic: FALSE
