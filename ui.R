@@ -7,6 +7,7 @@ shinyUI(fluidPage(
 
   # Sidebar with a slider input for number of bins
   mainPanel(
+     verbatimTextOutput("tableInfo"),
      DT::dataTableOutput("serverData")
     )
   )

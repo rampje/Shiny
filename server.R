@@ -4,7 +4,7 @@ library(ggplot2)
 library(httr)
 library(httpuv)
 library(jsonlite)
-library(magrittr)
+library(dplyr)
 library(DT)
 
 shinyServer(function(input, output, session) {
@@ -17,7 +17,7 @@ shinyServer(function(input, output, session) {
     
     marketContent <- httr::GET(marketLink)
     marketData <- httr::content(marketContent)
-    marketData <- jsonlite::fromJSON(toJSON(marketData))
+    marketData <- jsonlite::fromJSON(jsonlite::toJSON(marketData))
     marketData <- data.frame(marketData)
     
     keepCols <- c("Contracts.TickerSymbol",
@@ -37,12 +37,17 @@ shinyServer(function(input, output, session) {
     marketData
   }
   # initialize the table 
-  serverData <<- GetData("VAGOV17")
+  serverData <<- GetData("PRES.FRANCE.2017")
   # function to update server data
   UpdateData <- function(){
-    serverData <<- rbind(GetData("VAGOV17"), serverData)
+    serverData <<- rbind(GetData("PRES.FRANCE.2017"), serverData)
   }
   
+  output$tableInfo <- renderPrint({
+    invalidateLater(60000, session) # 60 seconds
+    UpdateData()
+    glimpse(serverData)
+  })
   
   output$serverData <- DT::renderDataTable({
     invalidateLater(60000, session) # 60 seconds
