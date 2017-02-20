@@ -3,8 +3,9 @@ title: ShinyDeploy
 account: rampje
 server: shinyapps.io
 appId: 157203
-bundleId: 714632
+bundleId: 717189
 url: https://rampje.shinyapps.io/ShinyDeploy/
-when: 1487293625.39749
+when: 1487562962.64937
 asMultiple: FALSE
 asStatic: FALSE
+ignoredFiles: DGS10.csv
