@@ -6,6 +6,9 @@ library(httpuv)
 library(jsonlite)
 library(dplyr)
 library(DT)
+library(BatchGetSymbols)
+library(plotly)
+
 
 shinyServer(function(input, output, session) {
   
